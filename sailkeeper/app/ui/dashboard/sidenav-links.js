@@ -14,8 +14,8 @@ import { clsx } from 'clsx';
 const links = [
     { name: 'Home', href: '/dashboard', icon: HomeIcon },
     { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
-    { name: 'Spars', href: '/dashboard/sails', icon: UserGroupIcon },
-    { name: 'Sails/Covers', href: 'dashboard/sails', icon: UserGroupIcon }
+    { name: 'Spars', href: '/dashboard/sails', icon: DocumentDuplicateIcon },
+    { name: 'Sails/Covers', href: 'dashboard/sails', icon: DocumentDuplicateIcon }
 ]
 
 // Map the links to display in the side nav
