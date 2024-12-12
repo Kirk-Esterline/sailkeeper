@@ -16,5 +16,5 @@ These are the working layouts for the project currently
 </p>
 
 ### Customer Dashboard and Database Schema
-<img src="dashboard-screenshot.png" alt="Screenshot of the Sail Keeper Dashboard" width="48%">
-<img src="schema-screenshot.png" alt="Screenshot of the Sail Keeper Database Schema" width="48%">
+<img src="dashboard-screenshot.png" alt="Screenshot of the Sail Keeper Dashboard" width="40%">
+<img src="schema-screenshot.png" alt="Screenshot of the Sail Keeper Database Schema" width="40%">
