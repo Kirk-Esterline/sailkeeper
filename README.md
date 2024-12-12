@@ -6,6 +6,13 @@ Boatyards store a large variety of items related to the boat. During the boating
 
 This project aims to ease this problem by creating a platform where stored boats inventory can be recorded at the end of the season during decommissioning, updated as work is preformed, and verified against the following season during commissioning. Additionally coordination will be aided by all workers being able to see the current status and location of items. Lastly customer relationships will be aided due to the customer being aware of what was stored with the boat and what was delivered during commissioning.
 
-### Sreenshot of Landing Page Layout
+## Screenshots of the project
 
-![Sail Keeper Landing page screenshot](Screenshot.png)
+These are the working layouts for the project currently
+
+### Landing Page
+<img src="Screenshot.png" alt="Screenshot of the Sail Keeper landing page" width="65%"/>
+
+### Customer Dashboard and Database Schema
+<img src="dashboard-screenshot.png" alt="Screenshot of the Sail Keeper Dashboard" width="48%">
+<img src="schema-screenshot.png" alt="Screenshot of the Sail Keeper Database Schema" width="48%">
