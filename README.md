@@ -11,7 +11,9 @@ This project aims to ease this problem by creating a platform where stored boats
 These are the working layouts for the project currently
 
 ### Landing Page
+<p align="center">
 <img src="Screenshot.png" alt="Screenshot of the Sail Keeper landing page" width="65%"/>
+</p>
 
 ### Customer Dashboard and Database Schema
 <img src="dashboard-screenshot.png" alt="Screenshot of the Sail Keeper Dashboard" width="48%">
