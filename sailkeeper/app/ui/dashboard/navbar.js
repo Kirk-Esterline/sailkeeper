@@ -15,14 +15,15 @@ export default function Navbar() {
         { name: 'Contact', href: '/contact' }
     ]
 
+// Map the Array and build lis with links
     return(
         <div>
             <nav className="size-full bg-navBackground text-center" id="nav">
                 <ul className="py-2">
                     {links.map((link) => {
                         return(
-                            <li className="inline-block">
-                                <Link className={clsx("block text-white font-semibold leading-10 h-10 px-6",{'bg-sky-100 rounded-lg text-black': pathname === link.href,})} href={link.href}>
+                            <li key={link.name} className="inline-block">
+                                <Link className={clsx("block text-white font-semibold leading-10 h-10 px-6",{'bg-sky-100 rounded-lg text-slate-950': pathname === link.href,})} href={link.href}>
                                 {link.name}
                                 </Link>
                             </li>
@@ -33,8 +34,3 @@ export default function Navbar() {
         </div>
     )
 }
-
-{/* <li className="inline-block"><Link className={clsx("block text-white font-semibold leading-10 h-10 px-6",{'bg-sky-100 text-blue-600': pathname === href,})} href="/">Home</Link></li>
-<li className="inline-block"><Link className="block text-white font-semibold leading-10 h-10 px-6" href="/login">Login</Link></li>
-<li className="inline-block"><Link className="block text-white font-semibold leading-10 h-10 px-6" href="/signup">Signup</Link></li>
-<li className="inline-block"><Link className="block text-white font-semibold leading-10 h-10 px-6" href="#contact">Contact</Link></li> */}
