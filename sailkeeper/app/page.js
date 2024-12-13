@@ -1,16 +1,11 @@
 import Image from "next/image";
+import Navbar from "./ui/dashboard/navbar";
 
 export default function Home() {
   return (
     <>
     {/* Nav */}
-    <nav className="size-full bg-navBackground text-center" id="nav">
-        <ul className="py-2">
-            <li className="inline-block"><a className="block text-white font-semibold leading-10 h-10 px-6" href="/login">Login</a></li>
-            <li className="inline-block"><a className="block text-white font-semibold leading-10 h-10 px-6" href="/signup">Signup</a></li>
-            <li className="inline-block"><a className="block text-white font-semibold leading-10 h-10 px-6" href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <Navbar />
 
     {/* Home */}
     <article id="top" className="shadow-inner shadow-md py-32 text-left bg-white">
