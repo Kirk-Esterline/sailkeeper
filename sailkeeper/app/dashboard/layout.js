@@ -1,4 +1,5 @@
 import SideNav from "../ui/dashboard/sidenav";
+import Navbar from "../ui/dashboard/navbar";
 
 export default function Layout({ children }) {
     return(
@@ -6,6 +7,10 @@ export default function Layout({ children }) {
             <div className="w-full flex-none md:w-64">
                 <SideNav />
             </div>
+            <div className="w-full flex-none">
+                <Navbar />
+            </div>
+            {/* Figuring out why this div is off screen with the navbar present */}
             <div className='flex-grow p-6 md:overflow-y-auto md:p-12'>
                 {children}
             </div>
