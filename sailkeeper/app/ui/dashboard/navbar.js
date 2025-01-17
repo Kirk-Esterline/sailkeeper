@@ -23,7 +23,7 @@ export default function Navbar() {
                     {links.map((link) => {
                         return(
                             <li key={link.name} className="inline-block">
-                                <Link className={clsx("block text-white font-semibold leading-10 h-10 px-6",{ 'bg-sky-100 rounded-lg text-navBackground': pathname === link.href })} href={link.href}>
+                                <Link className={clsx("block text-white font-semibold leading-10 h-10 px-6",{ 'bg-sky-100 rounded-lg text-black': pathname === link.href })} href={link.href}>
                                 {link.name}
                                 </Link>
                             </li>

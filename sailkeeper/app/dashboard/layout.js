@@ -3,16 +3,18 @@ import Navbar from "../ui/dashboard/navbar";
 
 export default function Layout({ children }) {
     return(
-        <div className='flex h-screen flex-col md:flex-row md:overflow-hidden'>
-            <div className="w-full flex-none md:w-64">
-                <SideNav />
-            </div>
+        <div>
             <div className="w-full flex-none">
                 <Navbar />
             </div>
-            {/* Figuring out why this div is off screen with the navbar present */}
-            <div className='flex-grow p-6 md:overflow-y-auto md:p-12'>
-                {children}
+            <div className="flex flex-col md:flex-row">
+                <div className="flex-none md:w-64 h-screen">
+                    <SideNav />
+                </div>
+                {/* Figuring out why this div is off screen with the navbar present */}
+                <div className='flex-grow p-6 md:overflow-y-auto md:p-12'>
+                    {children}
+                </div>
             </div>
         </div>
     );
