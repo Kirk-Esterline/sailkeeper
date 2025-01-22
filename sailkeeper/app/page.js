@@ -13,7 +13,7 @@ export default function Home() {
             <div className="flex-wrap box-border items-stretch">
                 <div className="grid-cols-1">
                     <header>
-                        <h1 className="text-5xl ">Hi, I'm <strong className="font-extrabold">Sail Keeper</strong>.</h1>
+                        <h1 className="text-5xl ">{"Hi, I'm"} <strong className="font-extrabold">Sail Keeper</strong>.</h1>
                     </header>
                     <p className="text-gray-600 pb-16 text-xl">Simplifying busy boatyards by improving tracking of valuable customer assets such as sails, spars, and other non-attached equipment.</p>
                     <a href="/dashboard" 
