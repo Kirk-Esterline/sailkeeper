@@ -1,11 +1,14 @@
-import { Page } from "app/models/data";
+import { page } from "../models/data";
 
-export default function Home() {
+export default async function Home() {
+    
+    const data = await page(); 
+
+    console.log(data)
+    
     return (
         <div>
             Welcome to the Dashboard
-
-            { Page }
 
         </div>
     )
