@@ -11,3 +11,8 @@ export async function page() {
     const data = await getData();
     return data
 }
+
+export async function totalCustomers() {
+    const customers = await sql`SELECT * FROM customers;`
+    console.log(customers)
+}

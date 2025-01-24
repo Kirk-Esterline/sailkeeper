@@ -1,4 +1,5 @@
 import { page } from "../models/data";
+import { Card } from "../ui/dashboard/cards";
 
 export default async function Home() {
     
@@ -10,6 +11,7 @@ export default async function Home() {
         <div>
             Welcome to the Dashboard
 
+            <Card />
         </div>
     )
 }
