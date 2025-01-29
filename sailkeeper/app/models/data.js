@@ -18,15 +18,12 @@ const sql = neon(process.env.DATABASE_URL);
     }
 }
 
-// export async function page() {
-//     const data = await getData();
-//     return data
-// }
 
-export async function totalCustomersData() {
+export async function allCustomersData() {
     try{
-        const totalCustomersPromise = sql`SELECT COUNT(*) FROM customers;`;
-        const totalBoatsPromise = sql`SELECT
+        const getTotalCustomersPromise = sql`SELECT COUNT(*) FROM customers;`;
+        const getCustomers = sql`SELECT * FROM customers`
+        const getTotalBoatsPromise = sql`SELECT
             subquery.count_boat_one,
             subquery.count_boat_two,
             subquery.count_boat_three,
@@ -40,16 +37,22 @@ export async function totalCustomersData() {
             AS subquery`
         
         const data = await Promise.all([
-            totalCustomersPromise,
-            totalBoatsPromise,
+            getTotalCustomersPromise,
+            getTotalBoatsPromise,
+            getCustomers
         ])
+        
+        // Extracting the desired data out of the objects returned from the Database.
+        const totalCustomers = Number(data[0][0].count)
+        const totalBoats = Number(data[1][0].total_count)
+        const customers = data[2]
 
-        const totalCustomers = Number(data[0])
-        const totalBoats = Number(data[1].total_count)
+        console.log(customers)
 
         return {
             totalCustomers,
-            totalBoats
+            totalBoats,
+            customers
         }
     } catch (error) {
         console.error('Database Error selecting totalCustomersData:', error);

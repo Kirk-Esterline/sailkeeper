@@ -14,8 +14,8 @@ import { clsx } from 'clsx';
 const links = [
     { name: 'Home', href: '/dashboard', icon: HomeIcon },
     { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
-    { name: 'Spars', href: '/dashboard/sails', icon: DocumentDuplicateIcon },
-    { name: 'Sails/Covers', href: 'dashboard/sails', icon: DocumentDuplicateIcon }
+    { name: 'Spars', href: '/dashboard/spars', icon: DocumentDuplicateIcon },
+    { name: 'Sails/Covers', href: '/dashboard/sails-covers', icon: DocumentDuplicateIcon }
 ]
 
 // Map the links to display in the side nav
@@ -40,6 +40,34 @@ export default function NavLinks() {
                     <p className='hidden md:block'>{link.name}</p>
                 </Link>
             );
+        })}
+        </>
+    )
+}
+
+// Array of links to be used in navbar
+
+const navbarLinks = [
+    { name: 'Home', href: '/'},
+    { name: 'Login', href: '/login' },
+    { name: 'Signup', href: '/signup' },
+    { name: 'Contact', href: '/contact' }
+]
+
+export function NavbarLinks() {
+    const pathname = usePathname();
+    return(
+        <>
+        {navbarLinks.map((link) => {
+            return (
+                <Link
+                    key={link.name}
+                    href={link.href}
+                    className={clsx('inline-block font-semibold leading-10 h-10 px-6', { '!bg-sky-100 rounded-lg text-black': pathname === link.href })}
+                >
+                    {link.name}
+                </Link>
+            )
         })}
         </>
     )
