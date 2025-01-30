@@ -63,7 +63,7 @@ export function NavbarLinks() {
                 <Link
                     key={link.name}
                     href={link.href}
-                    className={clsx('inline-block font-semibold leading-10 h-10 px-6', { '!bg-sky-100 rounded-lg text-black': pathname === link.href })}
+                    className={clsx('inline-block font-semibold leading-10 h-10 px-6', { '!bg-sky-100 rounded-lg text-navBackground': pathname === link.href })}
                 >
                     {link.name}
                 </Link>

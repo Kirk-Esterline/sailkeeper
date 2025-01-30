@@ -33,7 +33,7 @@ export async function CardWrapper() {
 }
 
 
-
+// Add a title to show the status of the boat. Ex. Boatyard Care | Customer Care
 export async function Card(
     {name, email, phone_number, delivery_address, boat_one, boat_two, boat_three}
 ) {
