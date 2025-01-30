@@ -1,5 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 
+
 const sql = neon(process.env.DATABASE_URL);
 
 // A temporary hacky way of getting the Boatyard Name to show on the Dashboard.
@@ -57,5 +58,18 @@ export async function allCustomersData() {
     } catch (error) {
         console.error('Database Error selecting totalCustomersData:', error);
         throw new Error('Failed to fetch card data.')
+    }
+}
+
+
+// Attempting to manipulate formData
+
+export function consoleTest(formData) {
+    try{
+        const joinID = formData[1]
+        console.log(`Your Unique Business Name is '${joinID}'`)
+    } catch (error) {
+        console.error('Database Error consoleTest:', error)
+        throw new Error('Failed to console.log(formData)')
     }
 }
