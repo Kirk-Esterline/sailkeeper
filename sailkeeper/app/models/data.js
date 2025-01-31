@@ -48,8 +48,6 @@ export async function allCustomersData() {
         const totalBoats = Number(data[1][0].total_count)
         const customers = data[2]
 
-        console.log(customers)
-
         return {
             totalCustomers,
             totalBoats,
@@ -64,12 +62,55 @@ export async function allCustomersData() {
 
 // Attempting to manipulate formData
 
-export function consoleTest(formData) {
+// export function consoleTest(formData) {
+//     try{
+//         // const joinID = formData[1]
+//         // console.log(`Your Unique Business Name is '${joinID}'`)
+//         console.log(formData)
+//     } catch (error) {
+//         console.error('Database Error consoleTest:', error)
+//         throw new Error('Failed to console.log(formData)')
+//     }
+// }
+
+
+// Add organizations the table
+
+export async function addOrganization(formData) {
+    const [biz_name, email, admin, joinid] = formData
     try{
-        const joinID = formData[1]
-        console.log(`Your Unique Business Name is '${joinID}'`)
+        await sql`
+            INSERT INTO organizations (biz_name, email, admin, joinid)
+            SELECT ${biz_name}, ${email}, ${admin}, ${joinid}
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM organizations
+                WHERE biz_name = ${biz_name} or joinid = ${joinid}
+                )`
     } catch (error) {
-        console.error('Database Error consoleTest:', error)
-        throw new Error('Failed to console.log(formData)')
+        console.error('Error addingOrganization', error);
+        throw new Error('Failed to addOrganization')
     }
+}
+
+export async function addAdmin(formData) {
+    const [biz_name,,,joinid, userName, email, role] = formData
+    try{
+        await sql`
+            INSERT INTO users (name, email, role, admin, organization_id)
+            SELECT ${userName}, ${email}, ${role}, TRUE, (
+                SELECT id 
+                FROM organizations 
+                WHERE joinid = ${joinid}
+            )
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM users
+                WHERE email = ${email}
+                )`
+    } catch (error) {
+        console.error('Error addingAdmin', error)
+        throw new Error('Failed to addAdmin')
+    }
+    
 }
