@@ -1,11 +1,11 @@
-import { addOrganization, addAdmin } from "@/app/models/data"
+import { addOrganization } from "@/app/models/data"
 
 
 export default async function SignUpOrganization() {
     
     async function sendOrganizationData(formData) {
         'use server'
-        const newData = [formData.get('BizName'),formData.get('email'), formData.get('admin'),formData.get('joinID'),formData.get('userName'), formData.get('adminEmail'), formData.get('role')]
+        const newData = [formData.get('BizName'),formData.get('email'), formData.get('admin'),formData.get('joinID')]
         await addOrganization(newData)
         await addAdmin(newData)
     }
