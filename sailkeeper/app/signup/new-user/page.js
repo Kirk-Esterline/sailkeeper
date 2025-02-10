@@ -1,5 +1,4 @@
 import SignupForm from '@/app/ui/signup/signup'
-import { Suspense } from 'react'
 
 export default function Home() {
     return (
@@ -10,10 +9,8 @@ export default function Home() {
                         {/* placeholder */}
                     </div>
                 </div>
-                <Suspense>
                     <SignupForm />
-                </Suspense>
-            </div>
+                </div>
 
         </main>
     )
