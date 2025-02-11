@@ -1,5 +1,4 @@
-import LoginForm from '@/app/ui/login-form'
-import { Suspense } from 'react'
+import SignupForm from '@/app/ui/signup/signup'
 
 export default function Home() {
     return (
@@ -10,10 +9,8 @@ export default function Home() {
                         {/* placeholder */}
                     </div>
                 </div>
-                <Suspense>
-                    <LoginForm />
-                </Suspense>
-            </div>
+                    <SignupForm />
+                </div>
 
         </main>
     )

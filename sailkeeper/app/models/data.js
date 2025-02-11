@@ -60,20 +60,6 @@ export async function allCustomersData() {
 }
 
 
-// Attempting to manipulate formData
-
-// export function consoleTest(formData) {
-//     try{
-//         // const joinID = formData[1]
-//         // console.log(`Your Unique Business Name is '${joinID}'`)
-//         console.log(formData)
-//     } catch (error) {
-//         console.error('Database Error consoleTest:', error)
-//         throw new Error('Failed to console.log(formData)')
-//     }
-// }
-
-
 // Add organizations the table
 
 export async function addOrganization(formData) {

@@ -7,7 +7,7 @@ export default function signUpNewOrganization() {
     return (
         <>
             <Link href="/signup/organization"> Sign Up an Organization</Link>
-            <Link href="/login">Sign Up a New User</Link>
+            <Link href="/signup/new-user">Sign Up a New User</Link>
 
             {/* <SignUpOrganization /> */}
         </>

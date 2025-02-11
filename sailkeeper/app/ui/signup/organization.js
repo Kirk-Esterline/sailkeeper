@@ -1,7 +1,7 @@
 import { addOrganization } from "@/app/models/data"
 
 
-export default async function SignUpOrganization() {
+export default function SignUpOrganization() {
     
     async function sendOrganizationData(formData) {
         'use server'
