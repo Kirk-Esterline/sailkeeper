@@ -13,31 +13,21 @@ export async function addNewUser(formData) {
 // Creating hashed passwords in the try/catch block
    try {
         const saltRounds = 11
-        bcrypt.genSalt(saltRounds, (err, salt) => {
-            if (err) {
-                console.log(err)
-                return
-            }
-            bcrypt.hash(password, salt , (err, hash) => {
-                if (err) {
-                    console.log(err)
-                    return
-                }
-                
-                console.log(`newly hashed password is: ${hash}`)
+        const salt = await bcrypt.genSalt(saltRounds);
+        hashedPassword = await bcrypt.hash(password, salt);
 
-                hashedPassword = hash
-                addToDatabase()
-            })
-        })
+        console.log(`newly hashed password is: ${hashedPassword}`);
+
+        await addToDatabase()
     } catch (error) {
         console.error('Error hashing new password', error);
         throw new Error ('Failed to hash new password')
     }
     
-    function addToDatabase() {
+    async function addToDatabase() {
+        console.log('Testing ....')
         try { 
-             sql `
+            await sql `
             INSERT INTO users (name, email, role, admin, organization_id, password)
             SELECT ${name}, ${email}, ${role}, ${admin}, (
                 SELECT id

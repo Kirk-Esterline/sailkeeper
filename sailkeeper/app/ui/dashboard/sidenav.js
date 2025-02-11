@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import NavLinks from './nav-links';
 import { redirect } from 'next/dist/server/api-utils';
+import { signOut } from '@/auth';
 
 export default function SideNav() {
     return (
@@ -14,7 +15,7 @@ export default function SideNav() {
             </div>
             <form
                 action={async () => {
-                    'user server';
+                    'use server';
                     await signOut({ redirectTo: '/' });
                 }}
             >
