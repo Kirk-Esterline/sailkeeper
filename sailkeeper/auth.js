@@ -43,3 +43,15 @@ export const { auth, signIn, signOut } = NextAuth({
         }),
     ],
 })
+
+export async function generatePassword(password) {
+    try {
+        const saltRounds = 11
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(password, salt)
+        return hashedPassword
+    } catch (error) {
+        console.error('Error generating new password.', error);
+        throw new Error('Failed to hash password');
+    }
+} 

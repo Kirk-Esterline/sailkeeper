@@ -1,16 +1,7 @@
 
-// import { useActionState } from "react";
-// import { authenticate } from "../../lib/actions";
-// import { useSearchParams } from "next/navigation";
 import { addNewUser } from "@/app/models/users";
 
 export default function SignUpForm() {
-    // const searchParams = useSearchParams();
-    // const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
-    // const [errorMessage, formAction, isPending] = useActionState(
-    //     authenticate,
-    //     undefined,
-    // );
 
     async function sendUserData(formData) {
         'use server'
@@ -111,9 +102,8 @@ export default function SignUpForm() {
                          </div>
                     </div>
                 </div>
-                <input type="hidden" name="admin" value={true} />
-                {/* Removed as a test case to see how the flow works without <input type="hidden" name="redirectTo" value={callbackUrl} /> */}
-                <button className="mt-4 w-full"> {/* Removed as a test case to see how the flow works without aria-disabled={isPending}> */}
+                <input type="hidden" name="admin" value={false} />
+                <button className="mt-4 w-full"> 
                     Sign Up
                 </button>
                 <div
@@ -121,11 +111,6 @@ export default function SignUpForm() {
                  aria-live="polite"
                  aria-atomic="true"
                  >
-                    {/* Removed as a test case to see how the flow works without {errorMessage && (
-                        <>
-                            <p className="text-sm text-red-500">{errorMessage}</p>
-                        </>
-                    )} */}
                  </div>
             </div>
             </div>
