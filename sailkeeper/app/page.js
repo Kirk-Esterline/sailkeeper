@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Navbar from "./ui/dashboard/navbar";
+import BigButton from "./ui/components/big-button";
 
 export default function Home() {
   return (
@@ -16,10 +17,11 @@ export default function Home() {
                         <h1 className="text-5xl ">Hi, I&apos;m <strong className="font-extrabold">Sail Keeper</strong>.</h1>
                     </header>
                     <p className="text-gray-600 pb-16 text-xl">Simplifying busy boatyards by improving tracking of valuable customer assets such as sails, spars, and other non-attached equipment.</p>
-                    <a href="/dashboard" 
+                    <BigButton buttonText="See How It Works" href="/dashboard"/>
+                    {/* <a href="/dashboard" 
                     className="text-2xl text-white font-extrabold bg-sky-500 rounded-lg drop-shadow-lg px-9 py-4 border border-gray-600 hover:bg-sky-400">
                         See How It Works
-                        </a>
+                        </a> */}
                 </div>
             </div>
         </div>
