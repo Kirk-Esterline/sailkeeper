@@ -2,8 +2,12 @@
 
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
+import { addNewUser } from "../models/users";
+import { addOrganization } from "../models/user";
+import { addAdmin } from "../models/users";
 
 export async function authenticate(prevState, formData) {
+    console.log(formData)
     try {
         await signIn('credentials', formData)
     } catch (error) {
@@ -16,5 +20,23 @@ export async function authenticate(prevState, formData) {
             }
         }
         throw error;
+    }
+}
+
+export async function addNewUserData(prevState, formData) {
+    console.log(formData.name)
+    try {
+        await addNewUser(formData)
+    } catch (error) {
+        throw new Error('Something went wrong in lib actions:', error)
+    }
+}
+
+export async function addNewOrgData(prevState, formData) {
+    try {
+        await addOrganization(formData)
+        await addAdmin(formData)
+    } catch (error) {
+        throw new Error('Something went wrong in lib actions:', error)
     }
 }

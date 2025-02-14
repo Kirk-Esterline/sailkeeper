@@ -1,17 +1,18 @@
-
-import { addNewUser } from "@/app/models/users";
+import { useActionState } from "react";
+import { addNewUserData } from "@/app/lib/actions";
+// import { addNewUser } from "@/app/models/users";
 
 export default function SignUpForm() {
 
-    async function sendUserData(formData) {
-        'use server'
-        const userData = [formData.get('name'), formData.get('email'), formData.get('password'), formData.get('role'), formData.get('admin'), formData.get('joinId')]
-        
-        await addNewUser(userData)
-    }
+    // Using useActionState to send the form data to the database through the actions file.
+    
+    const [errorMessage, formAction, isPending] = useActionState(
+        addNewUserData,
+        undefined
+    )
 
     return (
-        <form action={sendUserData} className="space-y-3">
+        <form action={formAction} className="space-y-3">
             <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
                 <h1 className="mb-3 text-2xl">
                     Please sign up to continue.

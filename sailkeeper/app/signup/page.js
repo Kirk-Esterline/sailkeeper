@@ -2,32 +2,40 @@
 
 import { useState } from "react"
 import BigButton from "../ui/components/big-button"
-// import SignUpForm from "../ui/signup/signup";
-import LoginForm from "../ui/login-form"; // This is a text to try the process
+import SignUpOrganization from "../ui/signup/organization";
+import SignUpForm from "../ui/signup/signup";
 
 
 // import SignUpOrganization from "../ui/signup/organization"
 
 export default function signUpNewOrganization() {
 
-    const [showForm, setShowForm] = useState 
-    (false);
+    const [showUserForm, setShowUserForm] = useState(false);
+    const [showOrgForm, setShowOrgForm] = useState(false)
 
     return (
-        <>
-        <div className="flex justify-center pt-10">
-            <div className="md:pr-5">
-            <BigButton buttonText="Sign Up an Organization" href=""/>
-            </div>
-            <div className="md:pr-5">
-            <BigButton buttonText="Sign Up a new User" href=""/>
-            </div>
-        </div>
+        <main>
+            <section className="flex justify-center pt-10">
+                <div className="md:pr-5">
+                <BigButton onClick={() => setShowOrgForm(prevState => !prevState)} buttonText="Sign Up an Organization" href=""/>
+                </div>
+                <div className="md:pr-5">
+                <BigButton onClick={() => setShowUserForm(prevState => !prevState)} buttonText="Sign Up a new User" href=""/>
+                </div>
+            </section>
+            <div className="relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:mt-10">
+                <div className={`${!showUserForm ? "hidden" : ''}`}>
+                    <SignUpOrganization />
+                </div>
+                <div className={`${!showOrgForm} ? "hidden" : ''`}>
+                    <SignUpForm />   
+                </div>
 
-        <LoginForm className={ showForm ? "hidden" : "block"}/>
+            </div>
 
-            {/* <SignUpOrganization /> */}
-        </>
+                {/* <SignUpOrganization /> */}
+        </main>
 
     )
 }
+

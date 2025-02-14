@@ -1,7 +1,7 @@
 import { neon } from '@neondatabase/serverless';
 
 
-const sql = neon(process.env.DATABASE_URL);
+const sql = neon(process.env.DATABASE_URL)
 
 // A temporary hacky way of getting the Boatyard Name to show on the Dashboard.
 // Checking the list of customers and retrieving the biz_name from the first entry.
@@ -63,7 +63,10 @@ export async function allCustomersData() {
 // Add organizations the table
 
 export async function addOrganization(formData) {
-    const [biz_name, email, admin, joinid] = formData
+    const biz_name = formData.get('name')
+    const email = formData.get('email')
+    const admin = formData.get('admin')
+    const joinid = formData.get('joinId')
     try{
         await sql`
             INSERT INTO organizations (biz_name, email, admin, joinid)
@@ -80,7 +83,11 @@ export async function addOrganization(formData) {
 }
 
 export async function addAdmin(formData) {
-    const [biz_name,,,joinid, userName, email, role] = formData
+    const biz_name = formData.get('biz_name')
+    const joinid = formData.get('joinID')
+    const userName = formData.get('userName')
+    const adminEmail = formData.get('adminEmail')
+    const role = formData.get('role')
     try{
         await sql`
             INSERT INTO users (name, email, role, admin, organization_id)
