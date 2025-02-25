@@ -1,5 +1,6 @@
-import { neon } from '@neondatabase/serverless';
+"use server"
 
+import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL)
 
@@ -82,28 +83,28 @@ export async function addOrganization(formData) {
     }
 }
 
-export async function addAdmin(formData) {
-    const biz_name = formData.get('biz_name')
-    const joinid = formData.get('joinID')
-    const userName = formData.get('userName')
-    const adminEmail = formData.get('adminEmail')
-    const role = formData.get('role')
-    try{
-        await sql`
-            INSERT INTO users (name, email, role, admin, organization_id)
-            SELECT ${userName}, ${email}, ${role}, TRUE, (
-                SELECT id 
-                FROM organizations 
-                WHERE joinid = ${joinid}
-            )
-            WHERE NOT EXISTS (
-                SELECT 1
-                FROM users
-                WHERE email = ${email}
-                )`
-    } catch (error) {
-        console.error('Error addingAdmin', error)
-        throw new Error('Failed to addAdmin')
-    }
+// export async function addAdmin(formData) {
+//     const biz_name = formData.get('biz_name')
+//     const joinid = formData.get('joinID')
+//     const userName = formData.get('userName')
+//     const adminEmail = formData.get('adminEmail')
+//     const role = formData.get('role')
+//     try{
+//         await sql`
+//             INSERT INTO users (name, email, role, admin, organization_id)
+//             SELECT ${userName}, ${email}, ${role}, TRUE, (
+//                 SELECT id 
+//                 FROM organizations 
+//                 WHERE joinid = ${joinid}
+//             )
+//             WHERE NOT EXISTS (
+//                 SELECT 1
+//                 FROM users
+//                 WHERE email = ${email}
+//                 )`
+//     } catch (error) {
+//         console.error('Error addingAdmin', error)
+//         throw new Error('Failed to addAdmin')
+//     }
     
-}
+// }
