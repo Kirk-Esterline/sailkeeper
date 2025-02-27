@@ -36,21 +36,90 @@ export default function SignUpOrganization() {
                         id="BizName"
                         name="BizName" 
                         type="name" 
-                        placeholder="Company Name" 
+                        placeholder="Acme Boatyard" 
                         required 
                         />
                     </div>
-                        <input name="email" type="email" placeholder="Email" className="block py-3 my-1" required></input>
-                        <input name="admin" type="string" placeholder="Admin Name" className="block py-3 my-1" required></input> 
-                        <input name="joinID" type="string" placeholder="Unique Business Name" className="block py-3 my-1" required></input>
-                    <section className="w-3/6">
-                        <h3>Admin Information</h3>
-                        <input name="userName" type="text" placeholder="Admin Name" className="block py-3 my-1" required></input>
-                        <input name="adminEmail" type="text" placeholder="Admin Email" className="block py-3 my1" required></input>
-                        <input name="role" type="text" placeholder="Company Role" className="block py-3 my-1" required></input>
-                    </section>
+                    <label
+                        className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+                        htmlFor="email">
+                        Company Email
+                    </label>
+                    <div className="relative">
+                        <input 
+                        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                        id="email"
+                        name="email" 
+                        type="email" 
+                        placeholder="info@acme.com" 
+                        required>
+                    </input>
+                    </div>
+                    <label
+                        className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+                        htmlFor="joinID">
+                        Unique Business Name
+                    </label>
+                    <div className="relative">
+                        <input 
+                        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                        id="joinID"
+                        name="joinID" 
+                        type="string" 
+                        placeholder="Join-Acme" 
+                        required>
+                        </input>
+                    </div>
+                        <h3 className="my-3 text-xl">
+                            Admin Information
+                        </h3>
+                    <label
+                        className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+                        htmlFor="admin">
+                        Administrator Name
+                    </label>
+                    <div className="relative">
+                        <input 
+                        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                        id="admin"
+                        name="admin" 
+                        type="name" 
+                        placeholder="Administrator Name"
+                        required>
+                        </input> 
+                    </div>
+                    <label 
+                        className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+                        htmlFor="adminEmail">
+                        Administrator Email
+                    </label>
+                    <div className="relative">
+                        <input 
+                        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                        id="adminEmail"
+                        name="adminEmail" 
+                        type="email" 
+                        placeholder="name@acme.com" 
+                        required>
+                        </input>
+                    </div>
+                    <label 
+                        className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+                        htmlFor="role">
+                        Company Role
+                    </label>
+                    <div className="relative">
+                        <input 
+                        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                        id="role"
+                        name="role" 
+                        type="text" 
+                        placeholder="Ex. Owner or Office Manager" 
+                        required>
+                        </input>
+                    </div>
+                <button type="submit" className="mt-5 bg-sky-100 rounded-lg text-slate-950 w-40">Create</button>
                 </div>
-                <button type="submit" className="bg-sky-100 rounded-lg text-slate-950 w-40">Create</button>
 
             </div>
         </form>
