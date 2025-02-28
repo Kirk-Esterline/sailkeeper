@@ -61,13 +61,16 @@ export async function allCustomersData() {
 }
 
 
-// Add organizations the table
+// Add organizations the table now handled in /users.js
 
 export async function addOrganization(formData) {
     const biz_name = formData.get('name')
     const email = formData.get('email')
-    const admin = formData.get('admin')
     const joinid = formData.get('joinId')
+    const admin = formData.get('admin')
+    const adminEmail = formData.get('adminEmail')
+    const role = formData.get('role')
+    
     try{
         await sql`
             INSERT INTO organizations (biz_name, email, admin, joinid)
@@ -77,6 +80,9 @@ export async function addOrganization(formData) {
                 FROM organizations
                 WHERE biz_name = ${biz_name} or joinid = ${joinid}
                 )`
+        
+        await sql`
+            INSERT INTO users (name, email, role, admin, organization_id, password)`
     } catch (error) {
         console.error('Error addingOrganization', error);
         throw new Error('Failed to addOrganization')

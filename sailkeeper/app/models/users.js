@@ -61,19 +61,23 @@ export async function addOrganization(formData) {
 }
 
 export async function addAdmin(formData) {
-    const biz_name = formData.get('biz_name')
     const joinid = formData.get('joinID')
-    const userName = formData.get('userName')
+    const userName = formData.get('admin')
     const adminEmail = formData.get('adminEmail')
+    const password = formData.get('password')
     const role = formData.get('role')
+// Hashing the new password
+    const hashedPassword = await generatePassword(password)
+// Adding the information to the database    
     try{
         await sql`
-            INSERT INTO users (name, email, role, admin, organization_id)
-            SELECT ${userName}, ${email}, ${role}, TRUE, (
+            INSERT INTO users (name, email, role, admin, organization_id, password)
+            SELECT ${userName}, ${adminEmail}, ${role}, TRUE, (
                 SELECT id 
                 FROM organizations 
                 WHERE joinid = ${joinid}
-            )
+            ), 
+            ${hashedPassword}
             WHERE NOT EXISTS (
                 SELECT 1
                 FROM users
