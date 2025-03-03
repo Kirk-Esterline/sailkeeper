@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { addNewUser } from "../models/users";
 import { addOrganization } from "../models/users";
-import { addAdmin } from "../models/users";
+// import { addAdmin } from "../models/users";
 
 export async function authenticate(prevState, formData) {
     console.log(formData)
@@ -35,8 +35,9 @@ export async function addNewUserData(prevState, formData) {
 export async function addNewOrgData(prevState, formData) {
     try {
         console.log('This is a test')
+        console.log(formData)
         await addOrganization(formData)
-        await addAdmin(formData)
+        // await addAdmin(formData)
     } catch (error) {
         throw new Error('Something went wrong in lib actions:', error)
     }

@@ -1,12 +1,12 @@
 import { useActionState } from "react"
-import { addOrganization } from "@/app/models/data"
-// import { addNewOrdData } from "@/app/lib/actions" 
+// import { addOrganization } from "@/app/models/data"
+import { addNewOrgData } from "@/app/lib/actions" 
 
 
 export default function SignUpOrganization() {
 
      const [errorMessage, formAction, isPending] = useActionState(
-            addOrganization,
+            addNewOrgData,
             undefined
         )
     
@@ -27,14 +27,14 @@ export default function SignUpOrganization() {
                     <h3 className="mb-3 text-xl">Company Information</h3>
                     <label
                         className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-                        htmlFor="BizName">
+                        htmlFor="biz_name">
                         Company Name
                     </label>
                     <div className="relative">
                         <input 
                         className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                        id="BizName"
-                        name="BizName" 
+                        id="biz_name"
+                        name="biz_name" 
                         type="name" 
                         placeholder="Acme Boatyard" 
                         required 

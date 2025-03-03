@@ -41,10 +41,16 @@ export async function addNewUser(formData) {
 }
 
 export async function addOrganization(formData) {
-    const biz_name = formData.get('name')
+    const biz_name = formData.get('biz_name')
     const email = formData.get('email')
     const admin = formData.get('admin')
-    const joinid = formData.get('joinId')
+    const joinid = formData.get('joinID')
+    const adminEmail = formData.get('adminEmail')
+    const password = formData.get('password')
+    const role =  formData.get('role')
+
+    const hashedPassword = await generatePassword(password)
+
     try{
         await sql`
             INSERT INTO organizations (biz_name, email, admin, joinid)
@@ -54,38 +60,51 @@ export async function addOrganization(formData) {
                 FROM organizations
                 WHERE biz_name = ${biz_name} or joinid = ${joinid}
                 )`
+        
+        await sql`
+            INSERT into users (name, email, role, admin, organization_id, password)
+            SELECT ${admin}, ${adminEmail}, ${role}, TRUE, (
+                SELECT id
+                FROM organizations
+                WHERE joinid = ${joinid}
+            ), ${hashedPassword}
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM users
+                WHERE email = ${adminEmail}
+                )`
     } catch (error) {
         console.error('Error addingOrganization', error);
         throw new Error('Failed to addOrganization')
     }
 }
 
-export async function addAdmin(formData) {
-    const joinid = formData.get('joinID')
-    const userName = formData.get('admin')
-    const adminEmail = formData.get('adminEmail')
-    const password = formData.get('password')
-    const role = formData.get('role')
-// Hashing the new password
-    const hashedPassword = await generatePassword(password)
-// Adding the information to the database    
-    try{
-        await sql`
-            INSERT INTO users (name, email, role, admin, organization_id, password)
-            SELECT ${userName}, ${adminEmail}, ${role}, TRUE, (
-                SELECT id 
-                FROM organizations 
-                WHERE joinid = ${joinid}
-            ), 
-            ${hashedPassword}
-            WHERE NOT EXISTS (
-                SELECT 1
-                FROM users
-                WHERE email = ${email}
-                )`
-    } catch (error) {
-        console.error('Error addingAdmin', error)
-        throw new Error('Failed to addAdmin')
-    }
+// export async function addAdmin(formData) {
+//     const joinid = formData.get('joinID')
+//     const userName = formData.get('admin')
+//     const adminEmail = formData.get('adminEmail')
+//     const password = formData.get('password')
+//     const role = formData.get('role')
+// // Hashing the new password
+//     const hashedPassword = await generatePassword(password)
+// // Adding the information to the database    
+//     try{
+//         await sql`
+//             INSERT INTO users (name, email, role, admin, organization_id, password)
+//             SELECT ${userName}, ${adminEmail}, ${role}, TRUE, (
+//                 SELECT id 
+//                 FROM organizations 
+//                 WHERE joinid = ${joinid}
+//             ), 
+//             ${hashedPassword}
+//             WHERE NOT EXISTS (
+//                 SELECT 1
+//                 FROM users
+//                 WHERE email = ${email}
+//                 )`
+//     } catch (error) {
+//         console.error('Error addingAdmin', error)
+//         throw new Error('Failed to addAdmin')
+//     }
     
-}
+// }
