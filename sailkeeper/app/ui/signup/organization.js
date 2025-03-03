@@ -1,5 +1,4 @@
 import { useActionState } from "react"
-// import { addOrganization } from "@/app/models/data"
 import { addNewOrgData } from "@/app/lib/actions" 
 
 
@@ -10,13 +9,6 @@ export default function SignUpOrganization() {
             undefined
         )
     
-    // async function sendOrganizationData(formData) {
-    //     'use server'
-    //     const newData = [formData.get('BizName'),formData.get('email'), formData.get('admin'),formData.get('joinID')]
-    //     await addOrganization(newData)
-    //     await addAdmin(newData)
-    // }
-
     return (
         <form action={formAction} className="space-y-3">
             <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">

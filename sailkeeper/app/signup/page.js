@@ -5,9 +5,6 @@ import BigButton from "../ui/components/big-button"
 import SignUpOrganization from "../ui/signup/organization";
 import SignUpForm from "../ui/signup/signup";
 
-
-// import SignUpOrganization from "../ui/signup/organization"
-
 export default function signUpNewOrganization() {
 
     const [showUserForm, setShowUserForm] = useState(false);

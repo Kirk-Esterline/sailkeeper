@@ -61,56 +61,5 @@ export async function allCustomersData() {
 }
 
 
-// Add organizations the table now handled in /users.js
+// Add organizations and addAdmin are now handled in /users.js
 
-export async function addOrganization(formData) {
-    const biz_name = formData.get('name')
-    const email = formData.get('email')
-    const joinid = formData.get('joinId')
-    const admin = formData.get('admin')
-    const adminEmail = formData.get('adminEmail')
-    const role = formData.get('role')
-    
-    try{
-        await sql`
-            INSERT INTO organizations (biz_name, email, admin, joinid)
-            SELECT ${biz_name}, ${email}, ${admin}, ${joinid}
-            WHERE NOT EXISTS (
-                SELECT 1
-                FROM organizations
-                WHERE biz_name = ${biz_name} or joinid = ${joinid}
-                )`
-        
-        await sql`
-            INSERT INTO users (name, email, role, admin, organization_id, password)`
-    } catch (error) {
-        console.error('Error addingOrganization', error);
-        throw new Error('Failed to addOrganization')
-    }
-}
-
-// export async function addAdmin(formData) {
-//     const biz_name = formData.get('biz_name')
-//     const joinid = formData.get('joinID')
-//     const userName = formData.get('userName')
-//     const adminEmail = formData.get('adminEmail')
-//     const role = formData.get('role')
-//     try{
-//         await sql`
-//             INSERT INTO users (name, email, role, admin, organization_id)
-//             SELECT ${userName}, ${email}, ${role}, TRUE, (
-//                 SELECT id 
-//                 FROM organizations 
-//                 WHERE joinid = ${joinid}
-//             )
-//             WHERE NOT EXISTS (
-//                 SELECT 1
-//                 FROM users
-//                 WHERE email = ${email}
-//                 )`
-//     } catch (error) {
-//         console.error('Error addingAdmin', error)
-//         throw new Error('Failed to addAdmin')
-//     }
-    
-// }
